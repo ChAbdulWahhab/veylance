@@ -25,6 +25,14 @@ jobs:
             target: windows-amd64
             binary_name: veyl.exe
             artifact_name: veyl-windows-amd64
+          - os: macos-13
+            target: darwin-amd64
+            binary_name: veyl
+            artifact_name: veyl-darwin-amd64
+          - os: macos-14
+            target: darwin-arm64
+            binary_name: veyl
+            artifact_name: veyl-darwin-arm64
 
     steps:
       - name: Checkout repository
@@ -65,8 +73,8 @@ jobs:
         with:
           name: ${{ matrix.target }}
           path: |
-            veyl-*.*
-            veyl-linux-*
+            ${{ matrix.artifact_name }}
+            ${{ matrix.artifact_name }}.*
 
   publish-release:
     name: Publish Release & Checksums
@@ -86,7 +94,8 @@ jobs:
         working-directory: release_assets
         run: |
           ls -la
-          sha256sum * > SHA256SUMS.txt
+          rm -f SHA256SUMS.txt
+          sha256sum veyl-* > SHA256SUMS.txt
           cat SHA256SUMS.txt
 
       - name: Create GitHub Release

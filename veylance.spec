@@ -8,10 +8,14 @@ block_cipher = None
 
 repo_root = Path(SPECPATH).resolve()
 
-# Bundled data files (sensitive paths, subdomains, user agents, etc.)
+from PyInstaller.utils.hooks import collect_data_files
+
+# Bundled data files (sensitive paths, subdomains, user agents, pyfiglet fonts, tldextract PSL, etc.)
 datas = [
     (str(repo_root / "veylance" / "data"), "veylance/data"),
 ]
+datas += collect_data_files("pyfiglet")
+datas += collect_data_files("tldextract")
 
 # Hidden imports for dynamically registered modules and CLI dependencies
 hiddenimports = [
@@ -24,9 +28,10 @@ hiddenimports = [
     "veylance.ui.progress",
     "veylance.ui.tables",
     "veylance.utils.audit",
+    "veylance.utils.drift",
     "veylance.utils.logger",
     "veylance.utils.wordlists",
-    # All 23 security modules
+    # All 35 security modules
     "veylance.modules",
     "veylance.modules.base",
     "veylance.modules.headers",
@@ -52,6 +57,20 @@ hiddenimports = [
     "veylance.modules.csp_analyzer",
     "veylance.modules.graphql_probe",
     "veylance.modules.jwt_probe",
+    # Advanced / Hidden Exposure Modules
+    "veylance.modules.secrets_in_js",
+    "veylance.modules.source_map_exposure",
+    "veylance.modules.git_exposure",
+    "veylance.modules.subdomain_takeover",
+    "veylance.modules.dependency_exposure",
+    "veylance.modules.ci_cd_exposure",
+    "veylance.modules.sri_check",
+    "veylance.modules.comment_leak",
+    "veylance.modules.cert_transparency_recon",
+    "veylance.modules.cache_poisoning_headers",
+    # Correlation & Differentiation Modules
+    "veylance.modules.combined_risk_scenarios",
+    "veylance.modules.scan_drift",
     # All report generators
     "veylance.report",
     "veylance.report.base",
@@ -67,6 +86,9 @@ hiddenimports = [
     "bs4",
     "yaml",
     "httpx",
+    "tldextract",
+    "pyfiglet",
+    "pyfiglet.fonts",
     "rich",
     "rich.console",
     "rich.table",

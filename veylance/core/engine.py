@@ -16,7 +16,6 @@ from veylance.core.findings import Finding, ScanResult, Severity
 from veylance.core.session import HttpSession
 from veylance.core.crawler import Crawler
 from veylance.core.target import Target
-from veylance.modules import ALL_MODULES
 from veylance.ui.progress import ScanProgress
 
 
@@ -39,6 +38,7 @@ class ScanEngine:
         history_dir: Optional[Any] = None,
     ):
         self.target = target
+        from veylance.modules import ALL_MODULES
         self.module_names = [m for m in modules if m in ALL_MODULES]
         self.max_pages = max_pages
         self.concurrency = concurrency
@@ -54,6 +54,7 @@ class ScanEngine:
         self.history_dir = history_dir
 
     async def run(self, progress: ScanProgress | None = None) -> ScanResult:
+        from veylance.modules import ALL_MODULES
         if progress is None:
             progress = ScanProgress(quiet=True)  # no-op
 

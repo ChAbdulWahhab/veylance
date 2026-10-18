@@ -13,10 +13,10 @@
 ## Core Capabilities
 
 - **Interactive Terminal Interface:** Executing `veyl` in an interactive terminal session initiates a high-fidelity terminal UI featuring real-time inspection status, concurrency metrics, and categorized findings.
-- **23 Specialized Audit Modules:** Automated security heuristics across transport encryption, authentication mechanisms, session management, access control boundaries, injection surfaces, and information disclosure.
+- **35 Specialized Audit Modules:** Automated security heuristics across transport encryption, authentication mechanisms, session management, access control boundaries, injection surfaces, supply-chain exposures, compound risk chains, and temporal scan drift.
 - **6 Standardized Report Formats:** Export machine-readable and executive artifacts in `markdown`, `json`, `html`, `sarif` (OASIS standard for GitHub Code Scanning), `csv` (Excel-compatible UTF-8 BOM), and `pdf`.
 - **Integrated Compliance & Governance:** Cryptographic audit logging (`~/.veylance/audit.log`), explicit terms consent persistence (`~/.veylance/consent.json`), and granular domain ownership declarations (`--i-own-this`).
-- **Zero-Dependency Native Binaries:** Standalone release binaries compiled for Linux, macOS (Apple Silicon and Intel), and Windows.
+- **Zero-Dependency Native Binaries:** Standalone release binaries compiled for Linux (amd64), macOS Apple Silicon (arm64), macOS Intel (amd64), and Windows (amd64).
 
 ---
 
@@ -25,6 +25,7 @@
 ### Option 1: Quick Install Scripts
 
 - **Linux & macOS (Bash):**
+  Automatically detects operating system, architecture (Apple Silicon vs. Intel), and Rosetta 2 translation:
   ```bash
   curl -sSL https://raw.githubusercontent.com/ChAbdulWahhab/veylance/main/install.sh | bash
   ```
@@ -50,9 +51,10 @@ pip install -e ".[dev,pdf]"
 ### Option 3: Pre-compiled Standalone Binaries
 
 Download self-contained binaries and cryptographic checksums directly from [GitHub Releases](https://github.com/ChAbdulWahhab/veylance/releases):
-- **Linux:** `veyl-linux-amd64`, `veyl-linux-arm64`
-- **macOS:** `veyl-darwin-amd64` (Intel), `veyl-darwin-arm64` (Apple Silicon)
-- **Windows:** `veyl-windows-amd64.exe`, `veyl-windows-amd64.zip`
+- **Linux (x86_64):** `veyl-linux-amd64`, `veyl-linux-amd64.tar.gz`
+- **macOS (Apple Silicon arm64):** `veyl-darwin-arm64`, `veyl-darwin-arm64.tar.gz`
+- **macOS (Intel x86_64):** `veyl-darwin-amd64`, `veyl-darwin-amd64.tar.gz`
+- **Windows (x64):** `veyl-windows-amd64.exe`, `veyl-windows-amd64.zip`
 
 ### Option 4: Package Managers
 
