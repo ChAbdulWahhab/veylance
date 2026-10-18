@@ -287,7 +287,7 @@ def test_release_workflow_matrix_coverage():
     assert "veyl-windows-amd64" in content
 
     # Must cover macOS Intel (amd64) and Apple Silicon (arm64)
-    assert "macos-13" in content
+    assert "macos-15-intel" in content
     assert "darwin-amd64" in content
     assert "veyl-darwin-amd64" in content
 

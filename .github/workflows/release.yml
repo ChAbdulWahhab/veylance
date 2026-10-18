@@ -25,7 +25,7 @@ jobs:
             target: windows-amd64
             binary_name: veyl.exe
             artifact_name: veyl-windows-amd64
-          - os: macos-13
+          - os: macos-15-intel
             target: darwin-amd64
             binary_name: veyl
             artifact_name: veyl-darwin-amd64
