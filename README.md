@@ -5,6 +5,7 @@
 [![Python Version](https://img.shields.io/badge/python-3.10%2B-blue?style=flat-square)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 [![Tests](https://img.shields.io/badge/tests-passing-brightgreen?style=flat-square)](tests/)
+[![XERJ Corpus Hub contributor](https://hub.xerj.org/contributors/ChAbdulWahhab/badge.svg)](https://hub.xerj.org/contributors/ChAbdulWahhab)
 
 **Veylance** is an automated, high-throughput command-line security auditing engine engineered for security engineers, devsecops teams, and infrastructure owners. It delivers comprehensive heuristic vulnerability assessments and configuration audits against web applications, exposing security exposures before malicious exploitation.
 
